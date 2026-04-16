@@ -47,8 +47,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
 
 /* KANBAN */
 .kanban{padding:20px 24px;overflow-x:auto}
-.kanban-board{display:flex;gap:8px;min-width:700px}
-.kb-col{flex:1;min-width:120px;max-width:160px}
+.kanban-board{display:flex;gap:14px;min-width:900px}
+.kb-col{flex:1;min-width:180px}
 .kb-col-header{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;padding:0 2px;display:flex;align-items:center;justify-content:space-between}
 .kb-col-count{background:var(--bg3);border-radius:20px;padding:1px 7px;font-size:10px;color:var(--ink2)}
 .kb-col-body{display:flex;flex-direction:column;gap:8px;min-height:60px;padding:4px;border-radius:8px;border:1px dashed var(--border);transition:background .15s}
@@ -66,7 +66,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
 .card-name{font-size:11.5px;color:var(--ink2);line-height:1.5;margin-bottom:6px}
 .card-norm{font-size:9.5px;color:var(--ink4);margin-bottom:5px;font-family:var(--mono)}
 .card-deps{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}
-.dep-tag{font-size:10px;padding:1px 6px;border-radius:3px;border:1px solid currentColor;opacity:.7}
+.dep-tag{font-size:10px;padding:2px 7px;border-radius:4px;border:1px solid currentColor;font-weight:600;opacity:1}
 .card-owner{font-size:10px;color:var(--ink3);border-top:1px solid var(--border);padding-top:6px;margin-top:5px;font-weight:500}
 .card-detail-btn{font-size:10px;color:var(--ink3);border:1px solid var(--border);border-radius:4px;padding:2px 7px;background:transparent;cursor:pointer;margin-top:5px;transition:all .15s;font-family:var(--mono)}
 .card-detail-btn:hover{background:var(--bg2);color:var(--ink)}
@@ -242,34 +242,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
 .footer-note{font-size:10px;color:var(--ink3);font-family:var(--mono);line-height:1.6}
 .footer-cta{font-size:11px;color:var(--ink2);font-style:italic;font-family:var(--serif)}
 
-/* ── MINI-CARDS: somente na visão integrada ─────────────────── */
-.kb-all-wrap{padding:14px 20px;overflow-x:auto}
-.kb-all-board{display:flex;flex-direction:column;gap:16px}
-.kb-phase-block{border:1px solid var(--border2);border-radius:var(--r-lg);overflow:hidden}
-.kb-phase-head{background:var(--accent-mid);padding:8px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(79,70,229,.15)}
-.kb-phase-head-title{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.kb-phase-head-sub{font-size:9px;color:var(--ink3);font-family:var(--mono)}
-.kb-phase-cols{display:flex;gap:0;min-width:600px}
-.kb-phase-col{flex:1;border-right:1px solid var(--border);padding:8px}
-.kb-phase-col:last-child{border-right:none}
-.kb-phase-col-head{font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink4);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.kb-iso-tag{font-size:7.5px;font-weight:700;font-family:var(--mono);padding:1px 5px;border-radius:99px}
-.kb-iso-tag.iso1{background:var(--accent-bg);color:var(--accent);border:1px solid rgba(79,70,229,.25)}
-.kb-iso-tag.iso2{background:#fef3c7;color:#92400e;border:1px solid rgba(217,119,6,.25)}
-/* Mini-card dentro da visão integrada */
-.kb-all-wrap .card{padding:5px 8px;border-radius:var(--r-xs);margin-bottom:3px;box-shadow:none}
-.kb-all-wrap .card:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm)}
-.kb-all-wrap .card-acronym{font-size:10px;font-weight:700;font-family:var(--mono)}
-.kb-all-wrap .card-name{font-size:9px;line-height:1.35;margin-bottom:3px;color:var(--ink2)}
-.kb-all-wrap .card-norm{font-size:8px;margin-bottom:2px;color:var(--ink4)}
-.kb-all-wrap .card-deps{gap:2px;margin-bottom:2px}
-.kb-all-wrap .dep-tag{font-size:7.5px;padding:1px 4px}
-.kb-all-wrap .card-owner{font-size:8px;padding-top:3px;margin-top:2px}
-.kb-all-wrap .card-detail-btn{font-size:7.5px;padding:2px 6px;margin-top:3px;text-transform:uppercase;letter-spacing:.03em}
-.kb-all-wrap .card-top{margin-bottom:2px}
-.kb-all-wrap .card-phase-dot{width:5px;height:5px}
-.kb-all-wrap .card-col-count{font-size:8px}
-/* ────────────────────────────────────────────────────────────── */
+
 </style>
 </head>
 <body>
@@ -642,16 +615,12 @@ body{font-family:var(--sans);background:var(--bg);color:var(--ink);min-height:10
   <div class="kb-filter-bar">
     <button class="kbtab active" onclick="setKbTab('iso3',this)">ISO 19650-1:2021</button>
     <button class="kbtab" onclick="setKbTab('iso2',this)">ISO 19650-2:2022</button>
-    <button class="kbtab" onclick="setKbTab('all',this)">ISO 19650-1:2021 + ISO 19650-2:2022</button>
   </div>
   <div id="kb-section-iso3" class="kb-section show">
     <div class="kanban"><div class="kanban-board" id="kanban-board"></div></div>
   </div>
   <div id="kb-section-iso2" class="kb-section">
     <div class="kanban" id="kanban-wrap-iso2"><div class="kanban-board" id="kanban-board-p2"></div></div>
-  </div>
-  <div id="kb-section-all" class="kb-section">
-    <div class="kb-all-wrap"><div id="kanban-board-all"></div></div>
   </div>
 </div>
 <div id="view-gantt" class="view">
@@ -2904,7 +2873,7 @@ function makeCard(d){
   el.ondragend   = () => el.classList.remove('dragging');
   const deps = d.feedsBy.map(fid => {
     const f = DOCS.find(x => x.id === fid);
-    return f ? `<span class="dep-tag" style="color:${f.color};border-color:${f.color}">${f.acronym}</span>` : '';
+    return f ? `<span class="dep-tag" style="background:${f.bg};color:${f.color};border-color:${f.color}">${f.acronym}</span>` : '';
   }).join('');
   el.innerHTML = `
     <div class="card-top">
@@ -2915,7 +2884,7 @@ function makeCard(d){
     <div class="card-norm">${d.norm}</div>
     ${deps ? `<div class="card-deps">${deps}</div>` : ''}
     <div class="card-owner">${d.owner}</div>
-    <button class="card-detail-btn" style="background:${d.color};color:${d.bg}" onclick="openModal('${d.id}')">Ver detalhes</button>`;
+    <button class="card-detail-btn" style="background:${d.bg};color:${d.color};border-color:${d.color}" onclick="openModal('${d.id}')">Ver detalhes</button>`;
   return el;
 }
 
