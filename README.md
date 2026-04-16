@@ -4,7 +4,7 @@
 > **Artefato de apoio ao estudo e discussão da governança da informação em BIM.**
 > Interpretativo e didático — não substitui a leitura das normas aplicáveis ao contexto.
 
-🔗 **[Acessar o guia](https://jeffmodeler.github.io/iso19650-info-governance)**
+🔗 **[Acessar o guia](https://jeffmodeler.github.io/guia-bim-19650/)**
 
 ---
 
