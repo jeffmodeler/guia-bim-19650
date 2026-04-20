@@ -1,6 +1,10 @@
 # ISO 19650 · Governança da Informação
 ## Guia Visual Interativo
 
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen?style=flat-square&logo=github)](https://jeffmodeler.github.io/guia-bim-19650/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+[![Normas cobertas](https://img.shields.io/badge/Normas-ISO%2019650%20(1%E2%80%935)-orange?style=flat-square)](https://jeffmodeler.github.io/guia-bim-19650/)
+
 > **Artefato de apoio ao estudo e discussão da governança da informação em BIM.**
 > Interpretativo e didático — não substitui a leitura das normas aplicáveis ao contexto.
 
@@ -60,6 +64,18 @@ Sem ISO 19650, projetos BIM frequentemente produzem **modelos sem governança** 
 | **§5.7** | Entrega do modelo de informação — autorização e aceite |
 | **§5.8** | Encerramento — arquivo e lições aprendidas |
 
+### ISO 19650-3:2025 — Fase operacional de ativos
+
+Processos de gestão da informação para operação e manutenção do ativo construído (AIM). Cobre o ciclo completo pós-entrega: §5.1 Gatilho → §5.8 Encerramento da fase operacional.
+
+### ISO 19650-4:2025 — Troca de informação
+
+Especifica como a informação deve ser trocada entre partes ao longo do ciclo de vida. Implementado como fluxograma SVG interativo baseado nas Figuras 1 e 3 da norma, com grade de critérios §7.1–§7.7.
+
+### ISO 19650-5:2025 — Abordagem voltada à segurança
+
+Requisitos de segurança para gestão de informação sensível de ativos construídos. Cobre avaliação de risco, plano de segurança, acordos e triagem de partes envolvidas.
+
 ---
 
 ## Funcionalidades
@@ -69,19 +85,19 @@ Sem ISO 19650, projetos BIM frequentemente produzem **modelos sem governança** 
 - Drag-and-drop entre fases
 - Cards com acrônimo, norma, dependências coloridas e responsável
 - Botão "Ver detalhes" com exemplos aplicados por documento
-- Alternância entre **ISO 19650-1:2021** e **ISO 19650-2:2022**
+- Alternância entre ISO 19650-1, -2, -3, -4 e -5
 
 ### 📊 Gantt de desenvolvimento
 - Cronograma com lógica de predecessoras reais (FS/SS)
 - 20 períodos cobrindo o ciclo completo de um empreendimento
-- Três visões: ISO-1 isolada · ISO-2 isolada · **visão integrada** com agrupamento temático
+- Três visões: ISO-1 isolada · ISO-2 isolada · visão integrada com agrupamento temático
 
 ### 📖 Drawer normativo `?`
 - **Fluxos normativos** — cadeia OIR→PIR→AIR→EIR→BEP→IDS→MIDP→AIM com pills clicáveis
-- **Diagramas da norma** — 7 figuras oficiais da ABNT NBR ISO 19650-1:2021 em tamanho real
+- **Diagramas da norma** — 7 figuras da ABNT NBR ISO 19650-1:2021 em tamanho real
 
 ### 🔍 Modais de detalhe por documento
-- Badge de parte normativa (ISO-1 / ISO-2 / IDS)
+- Badge de parte normativa (ISO-1 / ISO-2 / ISO-3 / ISO-4 / ISO-5 / IDS)
 - Caixa "Apoia qual decisão?" — a questão de governança que o documento resolve
 - Exemplos clicáveis: tabelas, blocos de código e narrativas
 
@@ -91,6 +107,29 @@ Sem ISO 19650, projetos BIM frequentemente produzem **modelos sem governança** 
 | `Norma` | Conceito normativo da ISO 19650 |
 | `Exemplo` | Ilustração aplicada — caráter didático |
 | `Implementação` | Referência de cenário específico |
+
+---
+
+## Arquitetura interna
+
+O projeto é um **single-file HTML app** — toda a lógica, dados e estilos estão em `index.html`.
+
+```
+index.html
+├── <style>          CSS com variáveis (design tokens)
+├── PHASES{}         Mapeamento fase → cor por seção normativa
+├── EXAMPLES{}       Exemplos por documento (tabela / código / narrativa)
+├── DOCS[]           Array principal — todos os documentos das 5 partes
+├── buildKanban()    Renderiza o board Kanban (ISO-1, -2, -3)
+├── buildGantt()     Renderiza o Gantt com predecessoras
+├── buildFluxoP4()   Renderiza o fluxograma SVG interativo da ISO 19650-4
+├── buildFluxoP5()   Renderiza o Kanban da ISO 19650-5
+├── buildChain()     Renderiza a cadeia síntese no header
+├── openModal()      Abre modal de detalhe de documento
+└── openExample()    Abre pop-up de exemplo
+```
+
+**Padrão de extensão:** novas seções normativas adicionam entradas a `DOCS[]` e `EXAMPLES{}`, e uma nova função `build*` invocada via `setKbTab()`.
 
 ---
 
@@ -114,6 +153,8 @@ A cadeia começa nos **requisitos organizacionais** (OIR), passa pelos **requisi
 4. Clique em qualquer card para ver detalhes e exemplos
 5. Use o botão **`?`** no header para fluxos e diagramas da norma
 
+> **Nota de cache:** após atualizar o arquivo, faça hard refresh (`Ctrl+Shift+R` / `Cmd+Shift+R`) ou desative o cache no DevTools para garantir que o navegador carregue a versão mais recente.
+
 ---
 
 ## Tecnologia
@@ -125,6 +166,18 @@ A cadeia começa nos **requisitos organizacionais** (OIR), passa pelos **requisi
 
 ---
 
+## Contributing
+
+Sugestões são bem-vindas. Formas de contribuir:
+
+- **Erros normativos:** abra uma [Issue](https://github.com/jeffmodeler/guia-bim-19650/issues) descrevendo o ponto da norma e a seção afetada
+- **Novos exemplos:** sugestões de exemplos aplicados para documentos existentes
+- **Novas partes da norma:** seguir o padrão — adicionar entradas em `DOCS[]` + `EXAMPLES{}` + nova função `build*()`
+
+> Os exemplos têm **caráter ilustrativo**. Expressões como "deve" e "obrigatório" referem-se ao cenário descrito, não à norma universal. Validação final: norma aplicável ao contexto.
+
+---
+
 ## Notas editoriais
 
 - Os exemplos têm **caráter ilustrativo**
@@ -133,4 +186,5 @@ A cadeia começa nos **requisitos organizacionais** (OIR), passa pelos **requisi
 
 ---
 
-*Desenvolvido como material de apoio ao estudo e discussão da governança da informação — ISO 19650-1:2021 · ABNT NBR ISO 19650-2:2022*
+*Desenvolvido como material de apoio ao estudo e discussão da governança da informação.*
+*ISO 19650-1:2021 · ABNT NBR ISO 19650-2:2022 · ISO 19650-3:2025 · ISO 19650-4:2025 · ISO 19650-5:2025*
