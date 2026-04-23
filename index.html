@@ -12,8 +12,21 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guia visual interativo da ISO 19650 — Kanban, Gantt e exemplos aplicados para estudo de governança da informação em BIM. Cobre ISO 19650-1, 19650-2 e 19650-3.">
+<meta name="keywords" content="ISO 19650, BIM, governança da informação, EIR, BEP, MIDP, TIDP, OIR, AIR, AIM, CDE, gestão de ativos, ABNT NBR">
+<meta name="author" content="Jefferson Borges">
+<meta property="og:title" content="Guia BIM 19650 — Governança da Informação">
+<meta property="og:description" content="Guia visual interativo para estudo da ISO 19650: Kanban de artefatos, Gantt de fases, exemplos aplicados e diagramas normativos. Partes 1, 2 e 3.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jeffmodeler.github.io/guia-bim-19650/">
+<meta property="og:image" content="https://jeffmodeler.github.io/guia-bim-19650/og-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="robots" content="index, follow">
 <title>Guia BIM 19650 — Governança da Informação</title>
 <!-- build: 1776357585 -->
+<meta name="build-date" content="2026-04-16">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
@@ -303,7 +316,6 @@ body{
 .ex-table tr:hover td{background:var(--bg)}
 .ex-note{font-size:11px;color:var(--ink3);background:var(--bg2);border-radius:6px;padding:9px 12px;margin-top:12px;line-height:1.6;border-left:3px solid var(--border2)}
 
-.legend{display:flex;flex-wrap:wrap;gap:8px;padding:10px 24px;border-top:1px solid var(--border)}
 .norm-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:500;padding:2px 8px;border-radius:3px;font-family:var(--mono);letter-spacing:.03em;margin-bottom:6px}
 .norm-badge.iso2{background:#f5f0c0;color:#3b3500;border:1px solid #3b350044}
 .norm-badge.iso3{background:#d4eff2;color:#0c444e;border:1px solid #0c444e44}
@@ -336,8 +348,6 @@ body{
 .kb-section.show{display:block}
 .kbtab-dot{display:inline-block;width:8px;height:8px;border-radius:2px;flex-shrink:0;margin-right:6px;opacity:.85;transition:opacity var(--t-base)}
 .kbtab.active .kbtab-dot{opacity:1;filter:brightness(1.6)}
-.leg{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink2)}
-.leg-dot{width:8px;height:8px;border-radius:2px}
 .editorial-bar{
   background:linear-gradient(180deg,rgba(238,242,255,.35) 0%,var(--bg2) 100%);
   border-bottom:1px solid var(--border);padding:10px 28px;
@@ -386,6 +396,19 @@ body{
 .guide-flow-note{font-size:10px;color:var(--ink3);margin-top:4px;font-style:italic}
 .diag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px}
 @media(max-width:900px){.diag-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+  .header{padding:14px 16px 12px;gap:10px}
+  .header-lede h1{font-size:16px}
+  .header-lede p{display:none}
+  .kanban-wrap,.gantt-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .chain-bar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .sticky-footer{padding-bottom:env(safe-area-inset-bottom)}
+  .method-legend{padding:8px 16px;gap:8px}
+  .footer-bar{padding:10px 16px}
+  .siglas-bar{padding:8px 16px;gap:6px}
+  .kb-filter-bar{padding:8px 16px 0}
+  .modal,.ex-modal{padding:20px 18px;max-height:94vh}
+}
 .diag-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;cursor:pointer;transition:all .18s;display:flex;flex-direction:column;gap:6px}
 .diag-card:hover{border-color:var(--border2);transform:translateY(-1px)}
 .diag-card-title{font-size:10px;font-weight:500;color:var(--ink);font-family:var(--mono);line-height:1.4}
@@ -410,7 +433,18 @@ body{
   content:'';position:absolute;left:28px;top:-1px;width:44px;height:1px;
   background:var(--gold);opacity:.55;
 }
-.footer-note{font-size:10px;color:var(--ink3);font-family:var(--mono);line-height:1.65;max-width:560px}
+.footer-note{font-size:10px;color:var(--ink3);font-family:var(--mono);line-height:1.65;max-width:620px}
+.siglas-bar{
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px;
+  padding:10px 32px;
+  border-top:1px solid var(--border);
+  background:var(--surface);
+}
+.siglas-bar-label{font-size:9.5px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);font-family:var(--mono);white-space:nowrap;flex-shrink:0}
+.siglas-bar-pills{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.siglas-pill{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--accent);background:var(--accent-bg);border:1px solid rgba(30,64,175,.18);border-radius:3px;padding:1px 7px;letter-spacing:.03em;white-space:nowrap}
+body.dark .siglas-pill{color:var(--accent2);background:var(--accent-mid);border-color:rgba(129,140,248,.22)}
+.siglas-bar-note{font-size:9.5px;color:var(--ink4);font-family:var(--mono);flex-shrink:1;border-left:1px solid var(--border2);padding-left:10px;line-height:1.5}
 .footer-cta{
   font-size:12px;color:var(--ink2);font-style:italic;font-family:var(--serif);
   font-weight:300;display:flex;align-items:center;gap:8px;
@@ -585,7 +619,7 @@ body{
               <span class="guide-flow-arrow">+</span>
               <span class="guide-flow-pill" style="background:#f5dcc0;color:#3b1a00;border-color:#3b1a0033" onclick="openModal('p2-53-4')">CCT</span>
               <span class="guide-flow-arrow">+</span>
-              <span class="guide-flow-pill" style="background:#f5dcc0;color:#3b1a00;border-color:#3b1a0033" onclick="openModal('p2-53-5')">PMO</span>
+              <span class="guide-flow-pill" style="background:#f5dcc0;color:#3b1a00;border-color:#3b1a0033" onclick="openModal('p2-53-5')">MOB</span>
               <span class="guide-flow-arrow">+</span>
               <span class="guide-flow-pill" style="background:#f5dcc0;color:#3b1a00;border-color:#3b1a0033" onclick="openModal('p2-riscos')">RRC</span>
               <span class="guide-flow-arrow">→</span>
@@ -613,7 +647,7 @@ body{
             </div>
           </div>
           <div class="guide-flow-section">
-            <div class="guide-flow-label">§5.6 Produção → §5.7 Entrega → §5.8 Encerramento</div>
+            <div class="guide-flow-label">§5.6 Produção (6 etapas condensadas) → §5.7 Entrega → §5.8 Encerramento</div>
             <div class="guide-flow-row">
               <span class="guide-flow-pill" style="background:#f5c8d8;color:#3b001a;border-color:#3b001a33" onclick="openModal('p2-geninfo')">GEN</span>
               <span class="guide-flow-arrow">→</span>
@@ -637,7 +671,7 @@ body{
         <!-- ══ D1 — HIERARQUIA OIR→AIR→EIR→AIM/PIM ══ -->
         <div class="diag-card" onclick="openDiag('d1')">
           <div class="diag-card-title">Hierarquia de requisitos e entregáveis</div>
-          <div class="diag-card-sub">OIR · PIR → AIR · EIR → AIM · PIM · cadeia normativa completa</div>
+          <div class="diag-card-sub">OIR → PIR (Req. Projeto) → AIR · EIR → AIM · PIM · cadeia normativa completa</div>
           <svg viewBox="0 0 320 180" style="width:100%;height:110px">
             <defs>
               <linearGradient id="g-oir" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#dce8f5"/><stop offset="100%" stop-color="#bdd4ee"/></linearGradient>
@@ -660,7 +694,7 @@ body{
             <!-- PIR -->
             <rect x="8" y="82" width="72" height="42" rx="7" fill="url(#g-oir)" stroke="#1a4a7a" stroke-width="1.2" filter="url(#f-d1)"/>
             <text x="44" y="98" text-anchor="middle" font-size="11" fill="#1a4a7a" font-family="monospace" font-weight="700">PIR</text>
-            <text x="44" y="112" text-anchor="middle" font-size="7" fill="#1a4a7a" font-family="sans-serif">Req. do Projeto</text>
+            <text x="44" y="112" text-anchor="middle" font-size="7" fill="#1a4a7a" font-family="sans-serif">Req. Projeto (ISO1)</text>
             <!-- OIR → PIR -->
             <line x1="44" y1="64" x2="44" y2="80" stroke="#1a4a7a" stroke-width="1.2" marker-end="url(#ar-d1)"/>
             <!-- AIR -->
@@ -1007,7 +1041,7 @@ body{
 
 <div class="editorial-bar">
   <span class="editorial-purpose">Artefato de apoio ao estudo e discussão da governança da informação — não substitui a leitura das normas aplicáveis ao contexto.</span>
-  <span class="editorial-tag">ISO 19650-1:2021 · ISO 19650-2:2022 · ISO 19650-3:2025</span>
+  <span class="editorial-tag">ISO 19650-1:2021 · ISO 19650-2:2022 · ISO 19650-3:2020</span>
 </div>
 
 <div class="chain-bar" id="chain-bar"></div>
@@ -1016,7 +1050,7 @@ body{
   <div class="kb-filter-bar">
     <button class="kbtab active" onclick="setKbTab('iso3',this)"><span class="kbtab-dot" style="background:#1a4a7a"></span>ISO 19650-1:2021</button>
     <button class="kbtab" onclick="setKbTab('iso2',this)"><span class="kbtab-dot" style="background:#3b3500"></span>ISO 19650-2:2022</button>
-    <button class="kbtab" onclick="setKbTab('iso4',this)"><span class="kbtab-dot" style="background:#0c4e38"></span>ISO 19650-3:2025</button>
+    <button class="kbtab" onclick="setKbTab('iso4',this)"><span class="kbtab-dot" style="background:#0c4e38"></span>ISO 19650-3:2020</button>
   </div>
   <div id="kb-section-iso3" class="kb-section show">
     <div class="kanban"><div class="kanban-board" id="kanban-board"></div></div>
@@ -1032,10 +1066,26 @@ body{
   <div class="kb-filter-bar">
     <button class="kbtab active" id="gtab-iso3" onclick="setGanttTab('iso3',this)"><span class="kbtab-dot" style="background:#1a4a7a"></span>ISO 19650-1:2021</button>
     <button class="kbtab" id="gtab-iso2" onclick="setGanttTab('iso2',this)"><span class="kbtab-dot" style="background:#3b3500"></span>ISO 19650-2:2022</button>
-    <button class="kbtab" id="gtab-iso4" onclick="setGanttTab('iso4',this)"><span class="kbtab-dot" style="background:#0c4e38"></span>ISO 19650-3:2025</button>
+    <button class="kbtab" id="gtab-iso4" onclick="setGanttTab('iso4',this)"><span class="kbtab-dot" style="background:#0c4e38"></span>ISO 19650-3:2020</button>
     <button class="kbtab" id="gtab-all"  onclick="setGanttTab('all',this)"><span class="kbtab-dot" style="background:#1a4a7a;outline:1px solid #3b3500;outline-offset:1px"></span>ISO 19650-1:2021 + ISO 19650-2:2022</button>
   </div>
   <div class="gantt-wrap"><div class="gantt" id="gantt"></div></div>
+</div>
+<div class="siglas-bar" id="siglas-bar">
+  <span class="siglas-bar-label">Siglas normativas ISO 19650</span>
+  <span class="siglas-bar-pills">
+    <span class="siglas-pill">OIR</span>
+    <span class="siglas-pill">AIR</span>
+    <span class="siglas-pill">EIR</span>
+    <span class="siglas-pill">BEP</span>
+    <span class="siglas-pill">TIDP</span>
+    <span class="siglas-pill">MIDP</span>
+    <span class="siglas-pill">AIM</span>
+    <span class="siglas-pill">PIM</span>
+    <span class="siglas-pill">CDE</span>
+    <span class="siglas-pill">LoIN</span>
+  </span>
+  <span class="siglas-bar-note" id="siglas-bar-note">Demais siglas são convenções editoriais deste guia, sem correspondência normativa direta</span>
 </div>
 <div class="sticky-footer">
   <div class="method-legend">
@@ -1044,7 +1094,6 @@ body{
     <span class="method-item"><span class="content-badge badge-ex">Exemplo</span> Ilustração aplicada — caráter didático</span>
     <span class="method-item" style="margin-left:8px;font-size:10px;color:var(--ink3);font-family:var(--mono)">Validação final: norma aplicável ao contexto</span>
   </div>
-  <div class="legend" id="legend"></div>
   <div class="footer-bar">
     <span class="footer-note">Os itens representam relações conceituais entre documentos e entregáveis · Exemplos têm caráter ilustrativo · Expressões como "deve" e "obrigatório" nos exemplos referem-se ao cenário descrito, não à norma universal</span>
     <span class="footer-cta">Artefato de apoio ao estudo e discussão técnica da governança da informação.</span>
@@ -1093,13 +1142,13 @@ const PHASE_TIPS = {
   'encerramento':   'Entrega do AIM ao operador e avaliação pós-implementação (PIR). Transferência do empreendimento à fase operacional.',
 
   // ── ISO 19650-2:2022 / ciclo de entrega (§5.1–§5.8) ──
-  'p2-necessidades':'§5.1 — A parte requerente determina os requisitos de informação do projeto: responsáveis, PIR, datas-marco, padrões, CDE e protocolo.',
+  'p2-necessidades':'§5.1 — A contratante determina os requisitos de informação do projeto: responsáveis, PIR, datas-marco, padrões, CDE e protocolo.',
   'p2-licitacao':   '§5.2 — Emissão do convite à licitação com EIR, informações de referência e resposta esperada das potenciais contratadas.',
   'p2-resposta':    '§5.3 — Preparação da resposta: BEP pré-contratual, avaliação de capacidade e competência, plano de mobilização e registro de riscos.',
   'p2-contratacao': '§5.4 — Nomeação formal: BEP definitivo, matriz de responsabilidades, TIDPs por tarefa e MIDP consolidado. Contratos assinados.',
   'p2-mob':         '§5.5 — Mobilização dos recursos, TI e padrões acordados. Equipes de tarefa iniciam operação no CDE do projeto.',
   'p2-producao':    '§5.6 — Produção colaborativa: geração, checagem, revisão e aprovação dos contêineres de informação ao longo do CDE.',
-  'p2-entrega':     '§5.7 — Entrega do modelo de informação à parte requerente nos gates definidos, atendendo aos requisitos do EIR.',
+  'p2-entrega':     '§5.7 — Entrega do modelo de informação à contratante nos gates definidos, atendendo aos requisitos do EIR.',
   'p2-encerramento':'§5.8 — Encerramento do empreendimento: arquivamento, lições aprendidas e transferência de responsabilidade.',
 
   // ── Combinado ISO 19650-1 + ISO 19650-2 (view "ALL" do Gantt) ──
@@ -1150,7 +1199,7 @@ const EXAMPLES = {
         ['Sprinkler','LOI 300','WBS_Code, Level, Flow_Rate, Pressure_Rating'],
         ['Estrutura','LOI 300','Material, seção, fck, fornecedor'],
       ],
-      note:'LOI define quais dados são necessários, independente da geometria — diferente de LOD que inclui geometria + dados.',
+      note:'LOI define quais dados são necessários, independentemente da geometria — diferente de LOD que inclui geometria + dados.',
     },
     { item:'Formatos e padrões de intercâmbio exigidos',
       title:'Matriz de formatos — exemplo OIR',
@@ -1192,7 +1241,7 @@ LGPD:
         ['Manutenção corretiva crítica','60 dias após conclusão','FM'],
         ['Revisão periódica completa','Anual','BIM Manager organizacional'],
       ],
-      note:'Sem esse calendário, o AIM vira um "modelo congelado" que perde utilidade rapidamente após a entrega.',
+      note:'Sem esse calendário, o AIM torna-se um "modelo congelado" que perde utilidade rapidamente após a entrega.',
     },
   ],
   air: [
@@ -1209,7 +1258,7 @@ LGPD:
         ['Periodicidade_Manut','IfcLabel','Sim','Semestral'],
         ['Norma_Referencia','IfcLabel','Sim','ABNT NBR 10897'],
       ],
-      note:'Esses parâmetros são exportados para o CMMS via COBie. Cada linha vira um campo no cadastro do ativo no sistema de manutenção.',
+      note:'Esses parâmetros são exportados para o CMMS via COBie. Cada linha torna-se um campo no cadastro do ativo no sistema de manutenção.',
     },
     { item:'Dados de garantia, fabricante e fornecedor (COBie)',
       title:'Planilha COBie Component — exemplo AIR',
@@ -1228,7 +1277,7 @@ LGPD:
       note:'O COBie é gerado automaticamente pelo Revit a partir dos parâmetros compartilhados definidos no IDS.',
     },
     { item:'Requisitos de geolocalização e orientação',
-      title:'Georeferenciamento — exemplo AIR',
+      title:'Georreferenciamento — exemplo AIR',
       type:'code',
       code:`Sistema de coordenadas:
   Datum:     SIRGAS 2000
@@ -1248,7 +1297,7 @@ Entrega obrigatória:
   - IFC com IfcSite georreferenciado
   - Relatório de levantamento topográfico (PDF)
   - Arquivo LAS / nuvem de pontos as-built`,
-      note:'Sem georeferenciamento correto, o AIM não pode ser integrado ao GIS da organização nem ao gêmeo digital.',
+      note:'Sem georreferenciamento correto, o AIM não pode ser integrado ao GIS da organização nem ao gêmeo digital.',
     },
     { item:'Informações de segurança (rotas de fuga, compartimentação)',
       title:'Requisitos de segurança — exemplo AIR',
@@ -1287,10 +1336,10 @@ Entrega obrigatória:
         ['Elétrica (ELE)','LOD 100','LOD 200','LOD 350','LOD 400'],
         ['HVAC (MEC)','LOD 100','LOD 200','LOD 350','LOD 400'],
       ],
-      note:'LOD 300 = geometria precisa + parâmetros de projeto. LOD 350 = conexões entre sistemas. LOD 400 = pronto para fabricação.',
+      note:'LOD 300 = geometria precisa + parâmetros de projeto. LOD 350 = conexões entre sistemas. LOD 400 = pronto para fabricação. Nota: a escala LOD 100–500 é padrão BIMForum (EUA), amplamente adotada no Brasil. A ISO 19650 utiliza LoIN / LOI — os dois sistemas são compatíveis, mas não idênticos.',
     },
     { item:'Softwares de autoria e coordenação aceitos',
-      title:'Stack tecnológico aceito — exemplo EIR',
+      title:'Conjunto de ferramentas aceito — exemplo EIR',
       type:'table',
       cols:['Categoria','Software','Versão mínima','Observação'],
       rows:[
@@ -1446,7 +1495,7 @@ Fluxo de entrega:
       note:'R=Responsável · A=Aprovador · C=Consultado · I=Informado',
     },
     { item:'Software de autoria, coordenação e CDE definidos',
-      title:'Stack tecnológico — exemplo BEP',
+      title:'Conjunto de ferramentas — exemplo BEP',
       type:'table',
       cols:['Camada','Software','Versão','Responsável'],
       rows:[
@@ -1666,7 +1715,7 @@ do início da produção da disciplina.`,
         ['PROJ-HID-G300-M3D','Modelo HID As-built','G300','LOD 400','M+14'],
         ['PROJ-HID-G300-COB','COBie HID completo','G300','LOD 400','M+14'],
       ],
-      note:'Cada linha do TIDP vira uma entrega rastreável no CDE. O código deve seguir o padrão do EIR.',
+      note:'Cada linha do TIDP corresponde a uma entrega rastreável no CDE. O código deve seguir o padrão do EIR.',
     },
     { item:'Formato de saída: IFC, PDF, NWD, COBie',
       title:'Formatos de saída — exemplo TIDP',
@@ -2417,7 +2466,7 @@ Objetivos de produção colaborativa:
         ['HOS-ELETR-01-00-M3D-ELE-0001','ELE','G100','300','M+6 sem.1','Atrasado'],
         ['HOS-MECAN-01-00-M3D-MEC-0001','MEC','G100','300','M+5 sem.4','WIP S0'],
       ],
-      note:'O MIDP é atualizado pela contratada líder a cada marco — é o "semáforo" mestre do projeto visto pela contratante.',
+      note:'O MIDP é atualizado pela contratada líder a cada marco — é o documento de controle mestre do projeto visto pela contratante.',
     },
     { item:'Referência master aprovada antes da mobilização',
       title:'Aprovação do MIDP v1.0 — exemplo §5.4.5',
@@ -2882,47 +2931,47 @@ Rescisão:
 };
 
 const DOCS = [
-  {id:'oir', acronym:'OIR',color:'#1a4a7a',bg:'#dce8f5',name:'Organizational Information Requirements',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'pre-bep',owner:'Contratante',normPart:'iso3',
+  {id:'oir', acronym:'OIR',color:'#1a4a7a',bg:'#dce8f5',name:'Requisitos de Informação da Organização (OIR – Organizational Information Requirements)',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'pre-bep',owner:'Contratante',normPart:'iso3',
    decisionFor:'Que informação a organização precisa para gerir seus ativos ao longo de toda a vida útil? Quais sistemas de negócio (CAFM, CMMS, GIS) precisam ser alimentados?',
    purpose:'Define as necessidades de informação da organização para todo o ciclo de vida dos ativos. É o documento estratégico permanente — não pertence a nenhum projeto específico.',
    fields:[{l:'Horizonte',v:'30–50 anos'},{l:'Escopo',v:'Organização inteira'},{l:'Revisão',v:'A cada projeto (PIR)'},{l:'Formato',v:'PDF + planilha'}],
    feeds:['air','eir'],feedsBy:[],ganttStart:0,ganttEnd:3},
-  {id:'air', acronym:'AIR',color:'#2d5a3d',bg:'#d8eddf',name:'Asset Information Requirements',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'pre-bep',owner:'Contratante + FM',normPart:'iso3',
+  {id:'air', acronym:'AIR',color:'#2d5a3d',bg:'#d8eddf',name:'Requisitos de Informação do Ativo (AIR – Asset Information Requirements)',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'pre-bep',owner:'Contratante + FM',normPart:'iso3',
    decisionFor:'Que dados de FM são necessários para operar e manter este ativo específico? Quais parâmetros de equipamentos precisam chegar ao CMMS via COBie?',
    purpose:'Especifica quais informações sobre o ativo são necessárias para suportar decisões de operação e manutenção pós-entrega. Ponte entre OIR e EIR.',
    fields:[{l:'Horizonte',v:'Vida útil do ativo'},{l:'Escopo',v:'Ativo específico'},{l:'Destino',v:'CAFM / CMMS'},{l:'Saída',v:'IFC LOD400 + COBie'}],
    feeds:['eir','aim'],feedsBy:['oir'],ganttStart:3,ganttEnd:6},
-  {id:'eir', acronym:'EIR',color:'#5a2d7a',bg:'#ecddf5',name:'Exchange Information Requirements',norm:'ISO 19650-2 §5.1',phase:'pre-bep',owner:'Contratante',normPart:'iso2',
+  {id:'eir', acronym:'EIR',color:'#5a2d7a',bg:'#ecddf5',name:'Requisitos de Troca de Informação (EIR – Exchange Information Requirements)',norm:'ISO 19650-2 §5.1',phase:'pre-bep',owner:'Contratante',normPart:'iso2',
    decisionFor:'O que, em que formato, com que LOD, em qual prazo e com quais critérios a equipe contratada deve entregar? Este documento é a base contratual — sem ele, não há como avaliar conformidade.',
    purpose:'Documento central do Pré-BEP. Define tudo que se espera receber das equipes: LOD por fase, software, nomenclatura, CDE, formatos IFC e datas. Base contratual BIM.',
    fields:[{l:'Horizonte',v:'Duração do projeto'},{l:'Escopo',v:'Projeto específico'},{l:'Resposta',v:'BEP preliminar'},{l:'Gate',v:'Gate 0 — EIR aprovado'}],
    feeds:['bep','ids'],feedsBy:['oir','air'],ganttStart:6,ganttEnd:9},
-  {id:'bep', acronym:'BEP',color:'#7a4a1a',bg:'#f5e8d8',name:'BIM Execution Plan',norm:'ISO 19650-2 §5.2–5.3',phase:'pre-contrato',owner:'Lead Appointed Party',normPart:'iso2',
+  {id:'bep', acronym:'BEP',color:'#7a4a1a',bg:'#f5e8d8',name:'Plano de Execução BIM (BEP – BIM Execution Plan)',norm:'ISO 19650-2 §5.2–5.3',phase:'pre-contrato',owner:'Parte contratada líder',normPart:'iso2',
    decisionFor:'A equipe tem capacidade de cumprir o EIR? (BEP pré-contratual, §5.3.2) / Como exatamente a equipe vai produzir, coordenar e entregar? (BEP definitivo, §5.4.1)',
    bepLayers:[{l:'Camada 1 — Pré-contratual §5.3.2',v:'Proposta técnica: estratégia, RACI macro, federação, metas. Avaliado antes de assinar.'},{l:'Camada 2 — Definitivo §5.4.1',v:'Guia operacional: RACI detalhada, IDS, EIR downstream, TIDP/MIDP. Aprovado antes de produzir.'}],
    purpose:'Resposta formal da equipe contratada ao EIR. Versão preliminar (proposta técnica) e definitiva (guia operacional). Define como a equipe produz, coordena e entrega informação.',
    fields:[{l:'Versão 1',v:'Preliminar — pré-contrato §5.3.2'},{l:'Versão 2',v:'Definitivo — pós-contrato §5.4.1'},{l:'Gate',v:'Gate 1 (pré-contrato) + Gate 2 (mobilização)'},{l:'Responsável',v:'BIM Manager (LAP)'}],
    feeds:['midp','ids'],feedsBy:['eir'],ganttStart:9,ganttEnd:12},
-  {id:'ids', acronym:'IDS',color:'#1a5a5a',bg:'#d8f0f0',name:'Information Delivery Specification',norm:'ISO 21597 / buildingSMART',phase:'mobilizacao',owner:'BIM Manager + disciplinas',normPart:'ids',
+  {id:'ids', acronym:'IDS',color:'#1a5a5a',bg:'#d8f0f0',name:'Especificação de Entrega de Informação (IDS – Information Delivery Specification)',norm:'ISO 21597 / buildingSMART',phase:'mobilizacao',owner:'BIM Manager + disciplinas',normPart:'ids',
    decisionFor:'Como verificar automaticamente se a informação entregue atende ao EIR? O IDS não substitui o EIR — ele formaliza os critérios do EIR em regras computacionais verificáveis.',
    idsNote:'O IDS é um instrumento de verificação, não de origem dos requisitos. A origem está no EIR (contratual) → AIR (FM) → OIR (estratégico). O IDS traduz esses requisitos em regras automáticas.',
    purpose:'Define com precisão quais parâmetros são obrigatórios em cada tipo de elemento IFC, em qual fase e com qual valor válido. Alimenta o fluxo automatizado de verificação de conformidade dos contêineres de informação.',
    fields:[{l:'Formato',v:'XML (IDS schema)'},{l:'Deriva de',v:'EIR (critérios de aceitação)'},{l:'Gate',v:'Gate 2 — antes de produzir'},{l:'Regras',v:'R1–R5 por disciplina'}],
    feeds:[],feedsBy:['eir','bep'],ganttStart:9,ganttEnd:12},
-  {id:'tidp',acronym:'TIDP',color:'#7a1a4a',bg:'#f5d8e8',name:'Task Information Delivery Plan',norm:'ISO 19650-2 §5.2',phase:'pre-contrato',owner:'Appointed Party (por disciplina)',
+  {id:'tidp',acronym:'TIDP',color:'#7a1a4a',bg:'#f5d8e8',name:'Plano de Entrega de Informação da Tarefa (TIDP – Task Information Delivery Plan)',norm:'ISO 19650-2 §5.2',phase:'pre-contrato',owner:'Parte contratada (por disciplina)',
    purpose:'Cronograma detalhado de todas as entregas de informação de uma disciplina específica. Cada AP elabora o seu TIDP, que é consolidado no MIDP pelo LAP.',
    fields:[{l:'Escopo',v:'1 disciplina / 1 AP'},{l:'Colunas',v:'Doc, LOD, data, status'},{l:'Atualização',v:'A cada marco'},{l:'Consolida em',v:'MIDP'}],
    feeds:['midp'],feedsBy:['bep','eir'],ganttStart:9,ganttEnd:12},
-  {id:'midp',acronym:'MIDP',color:'#4a1a7a',bg:'#e8d8f5',name:'Master Information Delivery Plan',norm:'ISO 19650-2 §5.2',phase:'producao',owner:'Lead Appointed Party',
+  {id:'midp',acronym:'MIDP',color:'#4a1a7a',bg:'#e8d8f5',name:'Plano Mestre de Entrega da Informação (MIDP – Master Information Delivery Plan)',norm:'ISO 19650-2 §5.2',phase:'producao',owner:'Parte contratada líder',
    purpose:'Consolidação de todos os TIDPs em um único documento de controle mestre. É o cronograma de todas as entregas BIM do projeto — mantido pelo LAP durante toda a execução.',
    fields:[{l:'Escopo',v:'Todas as disciplinas'},{l:'Atualização',v:'A cada sprint/marco'},{l:'Status',v:'Planejado/Em prod./Entregue'},{l:'Responsável',v:'LAP — BIM Manager'}],
    feeds:[],feedsBy:['tidp','bep'],ganttStart:12,ganttEnd:17},
-  {id:'aim', acronym:'AIM',color:'#1a5a3d',bg:'#d8f0e8',name:'Asset Information Model',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'encerramento',owner:'Contratante (FM)',normPart:'iso3',
+  {id:'aim', acronym:'AIM',color:'#1a5a3d',bg:'#d8f0e8',name:'Modelo de Informação do Ativo (AIM – Asset Information Model)',norm:'ISO 19650-1 §5.3 / ISO 19650-3',phase:'encerramento',owner:'Contratante (FM)',normPart:'iso3',
    decisionFor:'O ativo está pronto para operação com todos os dados FM prometidos no AIR? Validado contra o AIR — o primeiro documento escrito pela contratante.',
    purpose:'Modelo BIM final entregue ao contratante para operar e manter o ativo. Validado contra o AIR original. É o produto final do processo ISO 19650.',
    fields:[{l:'LOD',v:'400 (as-built)'},{l:'Valida contra',v:'AIR original (ISO 19650-3)'},{l:'Destino',v:'CAFM / CMMS / BMS'},{l:'Status CDE',v:'Published → operação'}],
    feeds:[],feedsBy:['air','eir'],ganttStart:15,ganttEnd:18},
-  {id:'pir', acronym:'PIR',color:'#7a3d1a',bg:'#f5e0d8',name:'Post-Implementation Review',norm:'ISO 19650-2 §5.6',phase:'encerramento',owner:'LAP + Contratante',
+  {id:'pir', acronym:'PIR',color:'#7a3d1a',bg:'#f5e0d8',name:'Revisão Pós-Implementação (PIR – Post-Implementation Review)',norm:'ISO 19650-2 §5.8',phase:'encerramento',owner:'Parte contratada líder + Contratante',
    purpose:'Avaliação formal do processo BIM ao final do projeto. O EIR foi atendido? Os gates foram respeitados? As lições aprendidas retroalimentam o OIR para o próximo projeto.',
    fields:[{l:'Quando',v:'Pós-entrega do AIM'},{l:'Participantes',v:'LAP + Contratante'},{l:'Saída',v:'Relatório + lições'},{l:'Retroalimenta',v:'OIR (próx. projeto)'}],
    feeds:['oir'],feedsBy:['aim','midp'],ganttStart:17,ganttEnd:20},
@@ -2934,8 +2983,8 @@ const DOCS = [
    feeds:['p2-rir'],feedsBy:[],ganttStart:0,ganttEnd:1},
 
   {id:'p2-rir',acronym:'RIR',color:'#0c444e',bg:'#d4eff2',name:'Requisitos de Informação do Projeto',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.1.2',phase:'p2-necessidades',owner:'Contratante',
-   purpose:'A contratante define as questões que precisa responder em cada ponto-chave de decisão do empreendimento. Estabelece o escopo informacional antes de qualquer convite à licitação.',
-   fields:[{l:'Quem elabora',v:'Contratante'},{l:'Quando',v:'Antes do edital'},{l:'Derivado de',v:'OIR + AIR + PIR'},{l:'Gate',v:'§5.1 — CDE pronto'}],
+   purpose:'A contratante define as questões que precisa responder em cada ponto-chave de decisão do empreendimento — operacionalização dos Project Information Requirements (PIR da ISO 19650-1 §3.2.18). Estabelece o escopo informacional antes de qualquer convite à licitação.',
+   fields:[{l:'Quem elabora',v:'Contratante'},{l:'Quando',v:'Antes do edital'},{l:'Equivale a',v:'PIR — ISO 19650-1 §3.2.18'},{l:'Gate',v:'§5.1 — CDE pronto'}],
    feeds:['p2-eir-licit'],feedsBy:[],ganttStart:1,ganttEnd:2},
 
   {id:'p2-marcas',acronym:'DMI',color:'#0c444e',bg:'#d4eff2',name:'Datas-Marco de Entrega da Informação',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.1.3',phase:'p2-necessidades',owner:'Contratante',
@@ -2993,14 +3042,14 @@ const DOCS = [
    fields:[{l:'Consolida',v:'Competência de todas as task teams'},{l:'Declara',v:'Maturidade BIM da equipe'},{l:'Inclui',v:'Capacidade de mobilização'},{l:'Base para',v:'Plano de mobilização §5.3.5'}],
    feeds:['p2-bep-def'],feedsBy:['p2-53-3'],ganttStart:4,ganttEnd:6},
 
-  {id:'p2-53-5',acronym:'PMO',color:'#3b1a00',bg:'#f5dcc0',name:'Plano de Mobilização da Equipe de Entrega',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.3.5',phase:'p2-resposta',owner:'Potencial contratada líder',
+  {id:'p2-53-5',acronym:'MOB',color:'#3b1a00',bg:'#f5dcc0',name:'Plano de Mobilização — proposta (§5.3.5)',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.3.5',phase:'p2-resposta',owner:'Potencial contratada líder',
    purpose:'A contratada elabora o plano detalhado de mobilização de recursos humanos, TI e CDE, cronogramando as atividades da fase §5.5 antes do início da produção colaborativa.',
    fields:[{l:'Contém',v:'Recursos + TI + CDE + testes'},{l:'Cronograma',v:'Atividades semana a semana'},{l:'Gate',v:'Aprovado antes do contrato'},{l:'Base para',v:'Mobilização §5.5'}],
    feeds:['p2-bep-def'],feedsBy:['p2-53-4'],ganttStart:4,ganttEnd:6},
 
   {id:'p2-53-7',acronym:'RLC',color:'#3b1a00',bg:'#f5dcc0',name:'Resposta Consolidada à Licitação',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.3.7',phase:'p2-resposta',owner:'Potencial contratada líder',
    purpose:'A contratada compila e consolida todos os documentos de resposta à licitação: BEP pré-contratual, registro de riscos, plano de mobilização, avaliação de competência — formando o pacote de proposta técnica BIM.',
-   fields:[{l:'Compila',v:'BEP-P + RRC + PMO + CAP + CCT'},{l:'Finalidade',v:'Proposta técnica BIM completa'},{l:'Avaliado por',v:'Contratante — critérios §5.2.3'},{l:'Gate',v:'Pré-seleção / adjudicação'}],
+   fields:[{l:'Compila',v:'BEP-P + RRC + MOB + CAP + CCT'},{l:'Finalidade',v:'Proposta técnica BIM completa'},{l:'Avaliado por',v:'Contratante — critérios §5.2.3'},{l:'Gate',v:'Pré-seleção / adjudicação'}],
    feeds:['p2-bep-def'],feedsBy:['p2-bep-pre','p2-riscos','p2-53-3','p2-53-4','p2-53-5'],ganttStart:6,ganttEnd:7},
 
   {id:'p2-bep-def',acronym:'BEP-D',color:'#1a003b',bg:'#e0d4f5',name:'BEP Definitivo Pós-Contrato',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.4.1',phase:'p2-contratacao',owner:'Contratada líder (LAP)',
@@ -3048,9 +3097,9 @@ const DOCS = [
    fields:[{l:'Loop',v:'Gerar → QA → Revisar → Compartilhar'},{l:'QA',v:'Verificação antes de Shared'},{l:'Estados CDE',v:'WIP → Shared → Published'},{l:'Responsável',v:'Equipes de tarefa'}],
    feeds:['p2-revisao'],feedsBy:['p2-mob2'],ganttStart:12,ganttEnd:17},
 
-  {id:'p2-revisao',acronym:'RMI',color:'#3b001a',bg:'#f5c8d8',name:'Revisão do Modelo de Informação',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.6.5',phase:'p2-producao',owner:'Contratada líder + Contratante',
-   purpose:'Revisão do modelo de informação federado pela contratada líder e pela contratante. Inclui verificação de conformidade com os requisitos de troca e avaliação dos critérios de aceitação.',
-   fields:[{l:'1ª revisão',v:'Contratada líder — autoriza'},{l:'2ª revisão',v:'Contratante — aceita'},{l:'Critérios',v:'EIR + padrões do projeto'},{l:'Resultado',v:'Aprovado ou devolvido com comentários'}],
+  {id:'p2-revisao',acronym:'RMI',color:'#3b001a',bg:'#f5c8d8',name:'Revisão do Modelo de Informação',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.6.5',phase:'p2-producao',owner:'Contratada líder',
+   purpose:'Revisão do modelo de informação federado pela contratada líder, verificando conformidade com o EIR e os padrões do projeto antes da submissão à contratante. O aceite formal pela contratante ocorre na fase seguinte (§5.7).',
+   fields:[{l:'Responsável',v:'Contratada líder (LAP) — §5.6.5'},{l:'Autoriza',v:'Submissão à contratante'},{l:'Critérios',v:'EIR + padrões do projeto'},{l:'Aceite contratante',v:'§5.7 — fase seguinte'}],
    feeds:['p2-entrega-mi'],feedsBy:['p2-geninfo'],ganttStart:14,ganttEnd:18},
 
   {id:'p2-entrega-mi',acronym:'EMI',color:'#001a3b',bg:'#c0d8f5',name:'Entrega do Modelo de Informação',normPart:'iso2',norm:'ABNT NBR ISO 19650-2 §5.7',phase:'p2-entrega',owner:'Contratada líder → Contratante',
@@ -3092,8 +3141,9 @@ function buildChain(){
     {id:'air',  label:'AIR',  sub:'Req. ativo FM',     color:'#2d5a3d', bg:'#d8eddf'},
     {id:'eir',  label:'EIR',  sub:'Req. contratual',   color:'#5a2d7a', bg:'#ecddf5'},
     {id:'bep',  label:'BEP',  sub:'Plano execução',    color:'#7a4a1a', bg:'#f5e8d8'},
+    {id:'tidp', label:'TIDP', sub:'Plano por tarefa',  color:'#7a1a4a', bg:'#f5d8e8'},
+    {id:'midp', label:'MIDP', sub:'Plano mestre',      color:'#4a1a7a', bg:'#e8d8f5'},
     {id:'ids',  label:'IDS',  sub:'Verificação',       color:'#1a5a5a', bg:'#d8f0f0'},
-    {id:'midp', label:'MIDP', sub:'Master plan',       color:'#4a1a7a', bg:'#e8d8f5'},
     {id:'aim',  label:'AIM',  sub:'Modelo op. ativo',  color:'#1a5a3d', bg:'#d8f0e8'},
     {id:'pir',  label:'PIR',  sub:'Avaliação final',   color:'#7a3d1a', bg:'#f5e0d8'},
   ];
@@ -3295,6 +3345,18 @@ function buildKanban(){
   });
 }
 
+function updateSiglasNote(tab){
+  const n = document.getElementById('siglas-bar-note');
+  if(!n) return;
+  const notes = {
+    iso3:  'Aba ISO 19650-1 — todas as siglas acima são normativas',
+    iso2:  'Aba ISO 19650-2 — siglas editoriais: GRI, RIR, DMI, PIP, MPI, REF, PRI, RRC, CAP, CCT, MOB, RLC, MRD, EIS, DCO, DCS, GEN, RMI, EMI, ENC',
+    iso4:  'Aba ISO 19650-3 — siglas editoriais: GTL, RRO, PRO, AUT, ACE, AGR e demais cards operacionais',
+    all:   'Vista combinada — demais siglas são convenções editoriais deste guia, sem correspondência normativa direta',
+  };
+  n.textContent = notes[tab] || 'Demais siglas são convenções editoriais deste guia, sem correspondência normativa direta';
+}
+
 function setKbTab(name, btn){
   document.querySelectorAll('#view-kanban .kbtab').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.kb-section').forEach(s => s.classList.remove('show'));
@@ -3302,6 +3364,7 @@ function setKbTab(name, btn){
   document.getElementById('kb-section-' + name).classList.add('show');
   __cardIdx = 0;
   if(name === 'all') buildKanbanAll();
+  updateSiglasNote(name);
 }
 
 let __cardIdx = 0;
@@ -3348,6 +3411,7 @@ function setGanttTab(mode, btn){
   document.querySelectorAll('#view-gantt .kbtab').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   buildGantt();
+  updateSiglasNote(mode === 'iso3' ? 'iso3' : mode === 'iso4' ? 'iso4' : 'iso2');
 }
 
 const SECS_ISO3 = [
@@ -3571,7 +3635,7 @@ function openModal(id){
     </div>
     <div class="mf" style="margin-top:10px">
       <div class="mf-label">Referências normativas</div>
-      <div class="mf-val" style="font-size:11px">${d.norm}${d.normPart==='iso2'?' · ABNT NBR ISO 19650-2:2022':d.normPart==='iso3'?' · ABNT NBR ISO 19650-1:2021':d.normPart==='iso3b'?' · ABNT NBR ISO 19650-3:2025':d.normPart==='iso4'?'':d.normPart==='ids'?' · EN 17412-1 (IDS)':''}</div>
+      <div class="mf-val" style="font-size:11px">${d.norm}${d.normPart==='iso2'?' · ABNT NBR ISO 19650-2:2022':d.normPart==='iso3'?' · ABNT NBR ISO 19650-1:2021':d.normPart==='iso3b'?' · ABNT NBR ISO 19650-3:2020':d.normPart==='iso4'?'':d.normPart==='ids'?' · buildingSMART IDS schema (bSI)':''}</div>
     </div>`;
   document.getElementById('modal-overlay').classList.add('show');
 }
@@ -3681,7 +3745,7 @@ function setGTab(name, btn){
 }
 
 const DIAG_DATA = {
-  d1:{title:'Hierarquia de requisitos e entregáveis',ref:'ISO 19650-1:2021 · §5.3 · Figura referência normativa',desc:'Mostra a cadeia completa: OIR (requisitos organizacionais) gera PIR (requisitos do projeto), que alimentam AIR (requisitos do ativo) e EIR (requisitos de troca). AIR especifica o AIM (modelo do ativo) e EIR especifica o PIM (modelo do projeto). As três colunas refletem: partes interessadas → contratual → entregável.'},
+  d1:{title:'Hierarquia de requisitos e entregáveis',ref:'ISO 19650-1:2021 · §5.3 · Figura referência normativa',desc:'Mostra a cadeia normativa: OIR (requisitos organizacionais) gera PIR (Project Information Requirements — requisitos do projeto, §3.2.18), que alimenta AIR (requisitos do ativo) e EIR (requisitos de troca). AIR especifica o AIM (modelo do ativo) e EIR especifica o PIM (modelo do projeto). Atenção: este PIR é o de requisitos (ISO 19650-1 §3.2.18) — distinto da Revisão Pós-Implementação da ISO 19650-2 §5.8, que usa a mesma sigla por convenção de mercado.'},
   d2:{title:'Camadas de gestão da organização',ref:'ISO 19650-1:2021 · §4 · Contexto normativo',desc:'Camadas concêntricas de gestão: Gestão da Organização engloba a Gestão do Empreendimento, que engloba a Gestão da Informação. Dentro da Gestão da Informação coexistem a Fase de Entrega (ISO 19650-2 / PIM) e a Fase Operacional (ISO 19650-3 / AIM), conectadas pelo processo de transferência de informação ao final da entrega.'},
   d3:{title:'Decisões-chave e fluxo de informação',ref:'ISO 19650-1:2021 · Fig. 6',desc:'O diamante vermelho representa decisões-chave do contratante (N). O diamante verde representa a troca de informação no nível da contratada. Os fluxos bidirecionais mostram que "requisitos" descem e "entregas de informação" sobem — entre contratante, contratada e equipes subcontratadas.'},
   d4:{title:'Ciclo de etapas e revisão da informação',ref:'ISO 19650-1:2021 · Fig. 7 · Ciclo verificar–validar–decidir',desc:'A cada transição entre estágios ocorre um ciclo ↻ de verificação e validação. O nó (n) é o ponto de transferência onde a informação é avaliada contra os requisitos. Decisões-chave (diamante N) estruturam portões de aprovação. EIR/AIR fluem verticalmente para orientar a produção em cada estágio.'},
@@ -3769,7 +3833,7 @@ d2:`<svg viewBox="0 0 640 380" xmlns="http://www.w3.org/2000/svg" style="width:1
   <text x="182" y="282" text-anchor="middle" font-size="9" fill="#8a6a9a">§5.1 Necessidades → §5.8 Encerramento</text>
   <rect x="344" y="170" width="228" height="138" rx="9" fill="#d8f0e8" stroke="#1a5a3d" stroke-width="1.5" filter="url(#d2-s)"/>
   <text x="458" y="200" text-anchor="middle" font-size="12" fill="#1a5a3d" font-family="monospace" font-weight="700">FASE OPERACIONAL</text>
-  <text x="458" y="216" text-anchor="middle" font-size="10" fill="#1a5a3d" font-family="monospace">ISO 19650-3:2025</text>
+  <text x="458" y="216" text-anchor="middle" font-size="10" fill="#1a5a3d" font-family="monospace">ISO 19650-3:2020</text>
   <text x="458" y="244" text-anchor="middle" font-size="24" fill="#1a5a3d" font-family="monospace" font-weight="800">AIM</text>
   <text x="458" y="264" text-anchor="middle" font-size="10" fill="#1a5a3d">Asset Information Model</text>
   <text x="458" y="282" text-anchor="middle" font-size="9" fill="#6a9a7a">Operação · Manutenção · FM</text>
@@ -4025,11 +4089,8 @@ function setView(name, btn){
   document.getElementById('view-'+name).classList.add('show');
   btn.classList.add('active');
 }
-function buildLegend(){
-  document.getElementById('legend').innerHTML = Object.entries(PHASES).map(([,ph]) =>
-    `<div class="leg"><div class="leg-dot" style="background:${ph.color}"></div>${ph.label}</div>`
-  ).join('');
-}
+
+
 // ── Tooltip customizado global (escapa containers com overflow) ──
 (function initTooltip(){
   let tipEl = null;
@@ -4085,9 +4146,9 @@ function buildLegend(){
   window.addEventListener('scroll', ()=>{ if(tipEl) tipEl.classList.remove('show'); }, true);
 })();
 
-buildKanban(); buildGantt(); buildLegend(); buildChain();
+buildKanban(); buildGantt(); buildChain();
 
-// ── ISO 19650-3:2025 — FASE OPERACIONAL DE ATIVOS ──────────────
+// ── ISO 19650-3:2020 — FASE OPERACIONAL DE ATIVOS ──────────────
 // Adiciona phases da parte 3 ao objeto global PHASES
 Object.assign(PHASES, {
   'p3-avaliacao':   {label:'§5.1 Avaliação e necessidade', color:'#0c4e38'},
@@ -4111,7 +4172,7 @@ const KANBAN_COLS_P3 = [
   {id:'p3-aim',         label:'§5.8 Agregação AIM'},
 ];
 
-// Extensão dos tooltips para a fase operacional (ISO 19650-3:2025)
+// Extensão dos tooltips para a fase operacional (ISO 19650-3:2020)
 Object.assign(PHASE_TIPS, {
   'p3-avaliacao':   '§5.1 — A parte requerente avalia o ativo existente, estabelece OIR/AIR operacionais e identifica eventos-gatilho que demandam informação.',
   'p3-convite':     '§5.2 — Convite a potenciais prestadores de serviço (FM, manutenção, reformas) com EIR adaptado à fase operacional do ativo.',
@@ -4162,7 +4223,7 @@ const DOCS_P3 = [
    fields:[{l:'Contém',v:'Estratégia + competência + mobilização'},{l:'Inclui',v:'Registro de riscos operacionais'},{l:'Gate',v:'Avaliação pré-compromisso'},{l:'Base para',v:'BEP definitivo §5.4.1'}],
    feeds:['p3-bep-def-op'],feedsBy:['p3-eir-op'],ganttStart:5,ganttEnd:7},
 
-  {id:'p3-risco-op', acronym:'RRC',color:'#1a3b1a',bg:'#d4ecd4',name:'Registro de Riscos (operacional)',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.3.6',phase:'p3-resposta',owner:'Potencial parte fornecedora líder',
+  {id:'p3-risco-op', acronym:'RRO',color:'#1a3b1a',bg:'#d4ecd4',name:'Registro de Riscos Operacionais',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.3.6',phase:'p3-resposta',owner:'Potencial parte fornecedora líder',
    purpose:'A parte fornecedora líder estabelece o registro de riscos de entrega da informação operacional: riscos de competência, clareza do EIR, padrão da informação e procedimentos de produção.',
    fields:[{l:'Avalia',v:'Riscos de produção de informação operacional'},{l:'Inclui',v:'Clareza do EIR + competência técnica'},{l:'Submetido com',v:'BEP pré-contratual'},{l:'Atualizado em',v:'§5.4 e ao longo do compromisso'}],
    feeds:['p3-bep-def-op'],feedsBy:['p3-bep-pre-op'],ganttStart:5,ganttEnd:7},
@@ -4190,18 +4251,18 @@ const DOCS_P3 = [
    feeds:['p3-geninfo-op'],feedsBy:['p3-bep-def-op','p3-midp-op'],ganttStart:10,ganttEnd:12},
 
   // §5.6 Produção da informação
-  {id:'p3-geninfo-op', acronym:'GEN',color:'#2a001a',bg:'#f5c8e0',name:'Produção da Informação (operacional)',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.6.2',phase:'p3-producao',owner:'Equipes de tarefa',
+  {id:'p3-geninfo-op', acronym:'PRO',color:'#2a001a',bg:'#f5c8e0',name:'Produção da Informação (operacional)',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.6.2',phase:'p3-producao',owner:'Equipes de tarefa',
    purpose:'Produção colaborativa da informação do ativo: verificação de referências no CDE, geração dos contêineres no estado WIP, verificação de garantia de qualidade (QA) e revisão para compartilhamento.',
    fields:[{l:'Loop',v:'Checar ref. → Gerar → QA → Revisar'},{l:'Critérios',v:'Padrão do AIR + métodos acordados'},{l:'Estados CDE',v:'WIP → Shared → Published'},{l:'Responsável',v:'Equipes de tarefa por TIDP'}],
    feeds:['p3-revisao-op'],feedsBy:['p3-mob-op'],ganttStart:12,ganttEnd:16},
 
-  {id:'p3-revisao-op', acronym:'RMI',color:'#2a001a',bg:'#f5c8e0',name:'Revisão e Autorização do Modelo de Informação',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.6.5–§5.6.6',phase:'p3-producao',owner:'Parte fornecedora líder',
+  {id:'p3-revisao-op', acronym:'AUT',color:'#2a001a',bg:'#f5c8e0',name:'Autorização do Modelo de Informação',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.6.5–§5.6.6',phase:'p3-producao',owner:'Parte fornecedora líder',
    purpose:'A parte fornecedora líder revisa o modelo de informação federado das equipes de entrega contra os critérios do EIR operacional e do padrão do AIR, antes de autorizar a submissão à parte requerente.',
    fields:[{l:'Verifica',v:'Conformidade com EIR + AIR'},{l:'Autoriza',v:'MI para submissão à parte requerente'},{l:'Rejeita',v:'Informação não conforme — BCF'},{l:'Parcial',v:'Recomenda aceitar ou rejeitar todo o MI'}],
    feeds:['p3-entrega-op'],feedsBy:['p3-geninfo-op'],ganttStart:14,ganttEnd:17},
 
   // §5.7 Aceitação
-  {id:'p3-entrega-op', acronym:'EMI',color:'#001a2a',bg:'#c0d8f0',name:'Submissão e Aceitação do Modelo de Informação',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.7',phase:'p3-aceitacao',owner:'Parte requerente',
+  {id:'p3-entrega-op', acronym:'ACE',color:'#001a2a',bg:'#c0d8f0',name:'Aceitação do Modelo de Informação',normPart:'iso3b',norm:'ABNT NBR ISO 19650-3 §5.7',phase:'p3-aceitacao',owner:'Parte requerente',
    purpose:'A parte fornecedora líder submete o MI à parte requerente via CDE. A parte requerente revisa contra o AIR, o EIR e o padrão do AIR. Resultado: aceite (S2 Published) ou rejeição (retorno com comentários).',
    fields:[{l:'Submete',v:'Parte fornecedora líder → CDE'},{l:'Revisa',v:'Parte requerente — EIR + AIR'},{l:'Aceite',v:'S2 Published no CDE'},{l:'Rejeição',v:'Retorno com comentários para correção'}],
    feeds:['p3-agrega-aim'],feedsBy:['p3-revisao-op'],ganttStart:17,ganttEnd:19},
@@ -4404,6 +4465,228 @@ const EXAMPLES_P3 = {
       note:'O ciclo recomeça com o próximo evento-gatilho. O AIM cresce e se torna mais rico a cada ciclo, aumentando seu valor operacional ao longo da vida útil do ativo.',
     },
   ],
+
+  // ── Exemplos gerados para cards sem conteúdo (13 cards) ──
+
+  'p3-cde-op': [
+    { item:'Configuração do CDE para suporte à fase operacional',
+      title:'CDE operacional — configuração e estados — exemplo §5.1.9',
+      type:'table',
+      cols:['Aspecto','Requisito operacional','Exemplo de implementação'],
+      rows:[
+        ['Estados dos contêineres','WIP → Shared → Published → Archived (S5)','Acc (Autodesk Construction Cloud) com estados configurados por tipo de ativo'],
+        ['Identificação única','Cada contêiner deve ter ID único persistente ao longo da vida útil','Código: [ATIVO]-[SISTEMA]-[DATA]-[REV] ex: ED01-HVAC-2025Q1-R02'],
+        ['Rastreabilidade','Todas as transações de estado devem ser auditáveis','Log automático: usuário, data/hora, estado anterior e novo'],
+        ['Integração corporativa','CDE deve permitir acesso a CMMS, ERP e GIS','API REST para exportação COBie ao Maximo + integração GIS via IFC-SRS'],
+        ['Controle de acesso','Permissão por contêiner e por perfil (FM, manutenção, terceiros)','Grupos: Requerente (leitura/aceite) · Fornecedor (WIP/Shared) · Admin (todos)'],
+        ['Retenção de dados','Política de retenção alinhada ao ciclo de vida do ativo','Contêineres Published retidos por mínimo 10 anos; S5 por vida útil do ativo'],
+      ],
+      note:'Diferença fundamental: o CDE operacional é permanente e contínuo, diferente do CDE de projeto que tem prazo definido.',
+    },
+  ],
+
+  'p3-risco-op': [
+    { item:'Registro de riscos de entrega de informação operacional',
+      title:'Registro de riscos operacionais — exemplo §5.3.6',
+      type:'table',
+      cols:['Risco identificado','Probabilidade','Impacto','Mitigação proposta','Responsável'],
+      rows:[
+        ['N.º de série não legível em equipamentos antigos','Alta','Médio','Pesquisa junto ao fabricante + fotografia da plaqueta de identificação','Técnico FM'],
+        ['EIR operacional ambíguo quanto ao LoIN exigido','Média','Alto','Solicitar reunião de alinhamento com parte requerente antes do início','BIM Manager FM'],
+        ['Falta de acesso físico ao ativo durante produção','Média','Alto','Planejar janelas de acesso com gestão predial com antecedência mínima de 15 dias','Coordenador FM'],
+        ['Dados de garantia vencidos ou ausentes no AIM existente','Alta','Baixo','Registrar lacuna no campo "observação" e notificar parte requerente via BCF','BIM Manager FM'],
+        ['Subcontratada sem capacidade de exportar COBie','Baixa','Alto','Exigir demonstração técnica antes do compromisso; fornecer template COBie','BIM Manager FM'],
+        ['Evento-gatilho imprevisível (emergência) durante produção em andamento','Baixa','Alto','Protocolo de interrupção documentado; MIDP com folga de 20%','Parte fornecedora líder'],
+      ],
+      note:'O registro de riscos operacionais deve ser revisado a cada novo evento-gatilho — riscos mudam conforme o estado do ativo e da equipe.',
+    },
+  ],
+
+  'p3-tidp-op': [
+    { item:'Plano de entrega de tarefa para inspeção de sistemas de segurança',
+      title:'TIDP operacional — exemplo §5.4.4',
+      type:'table',
+      cols:['Contêiner de informação','Formato','Estado CDE','Prazo','Dependência'],
+      rows:[
+        ['Relatório de inspeção de sprinklers — Pavto. 1 a 5','PDF + IFC (parâmetros ABNT 10897)','S0→S2 Published','D+10 após inspeção','Acesso físico garantido'],
+        ['Relatório de inspeção de sprinklers — Pavto. 6 a 10','PDF + IFC','S0→S2 Published','D+15 após inspeção','Relatório P.1–5 aprovado'],
+        ['Parâmetros de pressão e vazão — sistema completo','COBie Component (IFC)','S0→S1 Shared','D+18 após inspeção','Ensaio hidrostático concluído'],
+        ['IFC federado — sistema de sprinkler atualizado','IFC 4 (IfcFireSuppressionTerminal)','S0→S2 Published','D+20 após inspeção','Todos os relatórios por pavimento'],
+        ['Registro fotográfico — cabeçotes substituídos','PDF composto (fotos + localização)','S0→S2 Published','D+20 após inspeção','Inspeção finalizada'],
+      ],
+      note:'O TIDP operacional é mais enxuto que o de projeto — foca nos contêineres específicos do evento-gatilho, não em modelos de todo o ativo.',
+    },
+  ],
+
+  'p3-midp-op': [
+    { item:'Plano mestre de entrega consolidado para ciclo de manutenção anual',
+      title:'MIDP operacional — consolidação dos TIDPs — exemplo §5.4.5',
+      type:'table',
+      cols:['Equipe de tarefa','Contêiner principal','Formato','Marco de entrega','Estado final CDE'],
+      rows:[
+        ['Empresa climatização (HVAC)','IFC + COBie — Chillers e FCUs (50 equip.)','IFC 4 + CSV COBie','M+30 dias','S2 Published'],
+        ['Empresa de elevadores','PDF laudos + IFC — 6 elevadores','IFC 4 + PDF assinado','M+45 dias','S2 Published'],
+        ['Empresa elétrica','IFC + relatório — QGBT e painéis (8 und.)','IFC 4 + PDF','M+30 dias','S2 Published'],
+        ['Empresa sprinklers','IFC + relatório de ensaio — sistema completo','IFC 4 + PDF','M+60 dias','S2 Published'],
+        ['BIM Manager FM (Parte forn. líder)','MI federado — AIM parcial (todos sistemas)','IFC federado','M+70 dias','S2 Published → aceite'],
+      ],
+      note:'O MIDP operacional é aprovado pela parte requerente antes da mobilização e serve como referência de controle ao longo de todo o compromisso.',
+    },
+  ],
+
+  'p3-revisao-op': [
+    { item:'Revisão e autorização do modelo de informação antes da submissão',
+      title:'Revisão e autorização do MI operacional — exemplo §5.6.5–§5.6.6',
+      type:'code',
+      code:`Fluxo de revisão e autorização — parte fornecedora líder (BIM Manager FM)
+
+1. RECEBER MI das equipes de tarefa em estado S1 (Shared)
+   └─ HVAC: 50 contêineres IFC + COBie → S1 recebido
+   └─ Elétrica: 8 painéis IFC + PDF → S1 recebido
+   └─ Sprinklers: IFC federado + PDF → S1 recebido
+
+2. REVISAR contra o EIR operacional (§5.6.5)
+   ├─ EIR campo "n.série": 100% preenchido? → HVAC: PASS · Elétrica: FAIL (2 quadros)
+   ├─ EIR campo "data última manutenção": presente? → Todos: PASS
+   ├─ EIR formato: IFC 4 com IfcAsset vinculado? → HVAC: PASS · Sprinkler: PASS
+   └─ EIR critério aceitação: laudo PDF assinado por RT? → Elétrica: FAIL (1 laudo sem RT)
+
+3. REVISAR contra o padrão do AIR (§5.6.5)
+   └─ Nomenclatura de contêineres conforme padrão → PASS (todos)
+   └─ LoIN mínimo LOI 350 atingido → HVAC: PASS · Elétrica: PASS · Sprinkler: PASS
+
+4. RESULTADO DA REVISÃO
+   ├─ HVAC: AUTORIZADO para submissão à parte requerente
+   ├─ Elétrica: REJEITADO → BCF emitido (2 n.séries ausentes + 1 laudo sem RT)
+   └─ Sprinkler: AUTORIZADO para submissão à parte requerente
+
+5. AUTORIZAR submissão (§5.6.6)
+   └─ Mover contêineres AUTORIZADOS para S2 (submissão)
+   └─ Notificar parte requerente via CDE
+   └─ Retornar BCF à equipe elétrica — prazo de correção: 7 dias`,
+      note:'A parte fornecedora líder é responsável pela qualidade de todo o MI antes da submissão — inclusive das subcontratadas.',
+    },
+  ],
+
+  // ── Exemplos para as fases (colunas Kanban) da norma 3 ──
+
+  'p3-avaliacao': [
+    { item:'Avaliação do ativo existente e identificação de necessidades de informação',
+      title:'§5.1 Avaliação e necessidade — atividades-chave',
+      type:'table',
+      cols:['Atividade','Responsável','Produto','Referência'],
+      rows:[
+        ['Revisar ou estabelecer OIR para a fase operacional','Gestão de ativos / FM','OIR operacional documentado','ISO 19650-3 §5.1.2'],
+        ['Estabelecer AIR por tipo de ativo gerenciado','Parte requerente + FM','AIR por ativo (LOI + parâmetros)','ISO 19650-3 §5.1.4'],
+        ['Identificar eventos-gatilho previsíveis e imprevisíveis','Parte requerente','Registro de gatilhos categorizado','ISO 19650-3 §5.1.5'],
+        ['Verificar estado atual do AIM (lacunas de informação)','BIM Manager FM','Análise de lacunas do AIM existente','ISO 19650-3 §5.1.11'],
+        ['Confirmar ou adaptar o CDE para suporte operacional','Parte requerente + TI','CDE operacional configurado','ISO 19650-3 §5.1.9'],
+        ['Definir protocolo da informação para a fase operacional','Parte requerente','Protocolo de informação publicado','ISO 19650-3 §5.1.13'],
+      ],
+      note:'A fase de avaliação é permanente — a parte requerente revisa OIR e AIR continuamente ao longo da vida útil do ativo, não apenas no início.',
+    },
+  ],
+
+  'p3-convite': [
+    { item:'Convite à proposta com EIR operacional para prestador de serviço FM',
+      title:'§5.2 Convite à proposta — conteúdo do pacote de licitação operacional',
+      type:'table',
+      cols:['Documento / item','Conteúdo','Observação'],
+      rows:[
+        ['EIR operacional','Quais informações do ativo devem ser entregues, em qual formato e LoIN','1 EIR por evento-gatilho ou por tipo de compromisso'],
+        ['Padrão do AIR','Parâmetros exigidos por tipo de ativo (COBie, IFC, nomenclatura)','Referência ao AIR vigente — não reescrever'],
+        ['Informações de referência do AIM','Extrato do AIM existente: planta as-built, lista de ativos, histórico de manutenção','Fornecido pela parte requerente no CDE'],
+        ['Protocolo da informação','Propriedade intelectual, DPI, cláusulas contratuais de informação','Baseado no protocolo da organização §5.1.13'],
+        ['Critérios de avaliação da proposta','Critérios para avaliar BEP pré-contratual: capacidade, ferramentas, plano de mobilização','Alinhado a §5.3.3–§5.3.4'],
+        ['Prazo e cronograma esperado','Marco de entrega do MI + janelas de acesso ao ativo','Gatilho previsível: cronograma fixo; imprevisível: janela acordada'],
+      ],
+      note:'O pacote de convite operacional é mais enxuto que o EIR de projeto — foca em ativos específicos e gatilhos definidos, não em modelos completos de construção.',
+    },
+  ],
+
+  'p3-resposta': [
+    { item:'Resposta ao convite: avaliação de capacidade e BEP pré-contratual operacional',
+      title:'§5.3 Resposta ao convite — checklist da proposta operacional',
+      type:'table',
+      cols:['Item da proposta','Descrição','Critério mínimo de aceitação'],
+      rows:[
+        ['BEP pré-contratual','Estratégia de produção, gestão e entrega da informação operacional','Descreve abordagem para cada tipo de ativo do EIR'],
+        ['Avaliação de competência','Qualificação técnica da equipe em BIM operacional / FM digital','Comprovação de projetos similares com COBie ou IFC 4'],
+        ['Avaliação de capacidade','Ferramentas, softwares e processos para coleta e entrega da informação','PWA de campo, software IFC, acesso ao CDE demonstrado'],
+        ['Plano de mobilização','Cronograma de ativação da equipe e testes de produção','Início em até 10 dias úteis após o compromisso'],
+        ['Registro de riscos','Riscos identificados na produção de informação para o EIR recebido','Pelo menos 5 riscos com mitigações propostas'],
+        ['Declaração de conformidade com o protocolo','Aceite das cláusulas de propriedade intelectual e DPI','Assinatura do responsável legal da empresa'],
+      ],
+      note:'A parte requerente avalia as propostas contra os critérios definidos no convite (§5.2) antes de formalizar o compromisso (§5.4).',
+    },
+  ],
+
+  'p3-compromisso': [
+    { item:'Compromisso formal: BEP definitivo, TIDP e MIDP operacionais',
+      title:'§5.4 Compromisso — documentos de contratação operacional',
+      type:'table',
+      cols:['Documento','Quem elabora','Conteúdo-chave','Gate'],
+      rows:[
+        ['BEP definitivo operacional','Parte fornecedora líder','Confirmação da estratégia, RACI por ativo, EIR downstream','Antes da mobilização §5.5'],
+        ['TIDP por equipe de tarefa','Cada equipe de tarefa','Contêineres a produzir, formato, prazo, estado CDE alvo','Revisado pelo BIM Manager FM'],
+        ['MIDP consolidado','Parte fornecedora líder','Todos os TIDPs integrados — cronograma master de entrega','Aprovado pela parte requerente'],
+        ['Protocolo de informação (contratual)','Parte requerente + fornecedora','Propriedade, DPI, cláusulas de uso, responsabilidades','Assinado antes do início'],
+        ['EIR downstream (subcontratadas)','Parte fornecedora líder','EIR cascateado para cada subcontratada com critérios claros','Emitido na semana 1'],
+        ['Plano de resposta a gatilhos imprevistos','Parte fornecedora líder','Procedimento de emergência — como mobilizar em <48h','Aprovado pela parte requerente'],
+      ],
+      note:'O compromisso operacional é ativado por um evento-gatilho — pode ser planejado (manutenção preventiva) ou emergencial (falha, acidente).',
+    },
+  ],
+
+  'p3-mobilizacao': [
+    { item:'Mobilização de recursos para produção de informação em fase operacional',
+      title:'§5.5 Mobilização operacional — atividades e entregáveis',
+      type:'table',
+      cols:['Atividade','Responsável','Resultado esperado','Prazo'],
+      rows:[
+        ['Provisionar acesso ao CDE para todos os membros da equipe','BIM Manager FM','Usuários criados com permissões corretas por contêiner','Dia 1–2'],
+        ['Testar fluxo WIP → Shared → Published em ambiente real','BIM Manager FM','Workflow validado com contêiner piloto','Semana 1'],
+        ['Distribuir e treinar equipe no uso de templates de campo','BIM Manager FM + Coordenador','Equipe capaz de coletar dados conforme AIR','Semana 1–2'],
+        ['Verificar acesso físico ao ativo — janelas de manutenção','Coordenador FM + Gestão predial','Cronograma de acesso confirmado','Semana 1'],
+        ['Testar exportação COBie e IFC do software de campo','BIM Manager FM','Exportação validada contra padrão do AIR','Semana 2'],
+        ['Confirmar prontidão para gatilhos imprevistos','Parte fornecedora líder','Protocolo de emergência ativo — contatos e SLA definidos','Antes do fim da mobilização'],
+      ],
+      note:'A mobilização operacional tem dupla função: preparar para o compromisso planejado e garantir prontidão para eventos imprevistos durante o período contratual.',
+    },
+  ],
+
+  'p3-producao': [
+    { item:'Produção colaborativa da informação durante execução do serviço operacional',
+      title:'§5.6 Produção da informação — ciclo WIP → Shared → Published',
+      type:'table',
+      cols:['Etapa normativa','Atividade','Critério de avanço','Estado CDE'],
+      rows:[
+        ['§5.6.1 Verificar referências','Consultar AIR, EIR e padrão do AIM disponíveis no CDE antes de iniciar','Referências S2 Published acessíveis','WIP — pré-início'],
+        ['§5.6.2 Gerar informação','Coletar dados em campo (PWA), gerar IFC com parâmetros conforme AIR','Parâmetros obrigatórios preenchidos','S0 WIP'],
+        ['§5.6.3 Verificação QA','Script ou checklist valida parâmetros obrigatórios do AIR e nomenclatura','0 erros críticos no relatório QA','S0 WIP → pronto para Shared'],
+        ['§5.6.4 Revisão para compartilhamento','Autor revisa e aprova para compartilhamento com a equipe','Aprovação do autor responsável','S1 Shared'],
+        ['§5.6.5 Revisão do MI federado','BIM Manager FM revisa o MI integrado contra o EIR e o AIR','Conformidade com EIR e AIR confirmada','S1 Shared'],
+        ['§5.6.6 Autorização para entrega','BIM Manager FM autoriza submissão à parte requerente','Autorização formal documentada no CDE','S2 — pronto para aceite'],
+      ],
+      note:'Este ciclo se repete por equipe de tarefa e por tipo de ativo. O loop §5.6.2–§5.6.4 pode iterar múltiplas vezes até o QA passar.',
+    },
+  ],
+
+  'p3-aceitacao': [
+    { item:'Revisão e aceite formal do modelo de informação pela parte requerente',
+      title:'§5.7 Aceitação do MI — critérios e fluxo de decisão',
+      type:'table',
+      cols:['Critério de aceite','Verificação','Resultado possível','Ação se reprovado'],
+      rows:[
+        ['Conformidade com AIR','Todos os parâmetros exigidos por tipo de ativo estão presentes e preenchidos','PASS / FAIL por contêiner','BCF com campo ausente → retorno ao fornecedor'],
+        ['Conformidade com EIR','LoIN mínimo atingido; formato correto (IFC + COBie + PDF); prazo cumprido','PASS / FAIL por entregável','Instrução formal de correção com prazo'],
+        ['Conformidade com padrão do AIM','Nomenclatura, codificação e estrutura IFC conforme padrão da organização','PASS com observações / FAIL','Revisão pelo BIM Manager FM com template de referência'],
+        ['Completude do MI','Todos os ativos do EIR cobertos (sem lacunas não justificadas)','% de cobertura','Aceite parcial se > 95% e lacunas documentadas'],
+        ['Qualidade dos documentos vinculados','Laudos PDF assinados por RT, fotografia legível, datas corretas','PASS / FAIL por documento','Reemissão do documento específico — sem retrabalho de IFC'],
+      ],
+      note:'A norma recomenda aceitar ou rejeitar o MI como um todo. Aceites parciais devem ser formalmente documentados e acordados entre as partes.',
+    },
+  ],
 };
 
 // Mescla EXAMPLES_P3 no objeto EXAMPLES global
@@ -4454,14 +4737,15 @@ function buildKanbanP3(){
 }
 
 // Substitui setKbTab para suportar 3 abas
-const _origSetKbTab = setKbTab;
 function setKbTab(name, btn){
   document.querySelectorAll('#view-kanban .kbtab').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.kb-section').forEach(s => s.classList.remove('show'));
   btn.classList.add('active');
   document.getElementById('kb-section-' + name).classList.add('show');
+  __cardIdx = 0;
   if(name === 'all') buildKanbanAll();
   if(name === 'iso4') buildKanbanP3();
+  updateSiglasNote(name);
 }
 
 </script>
